@@ -183,6 +183,8 @@
             <script>
                 //event handler
                 function welcomemsg(){
+                    var name = document.getElementById('cName').value;
+                    document.getElementById('message').innerHTML= "Welcome <b>" +name+ "</b>!";
                     window.alert("Works!!");
                 }
                 // event ---> event handler
@@ -196,7 +198,24 @@
             <h1> Practice - Calculate Square</h1>
             Calculating Square:
             <input type="text" id="num" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result"> ? </label>
+            <label id="resultsq"> ? </label>
+            <p id="yaymsg"> </p>
+
+            <script>
+                   function calculate() {
+                    var intN = parseFloat(document.getElementById('num').value);
+                    //debuggin
+                    console.log("intN="+ intN);
+                    //output
+                    var ans = intN * intN;
+                    console.log("ans=" + ans);
+                    document.getElementById('resultsq').textContent = ans;
+
+                    document.getElementById('yaymsg').textContent= "Yay! Math is fun :)";
+                }
+                var calc = document.getElementById('num');
+                calc.addEventListener('blur', calculate, false);
+            </script>
 
         </div>
 
