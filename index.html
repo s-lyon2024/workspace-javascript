@@ -204,14 +204,19 @@
             <script>
                    function calculate() {
                     var intN = parseFloat(document.getElementById('num').value);
+                    if (Number.isNaN(Number.parseFloat(intN))){
+                        window.alert("Please enter a real number <3");
+                        document.getElementById('yaymsg').textContent= "Why? Math is fun :(";
+                    } else{
+                        document.getElementById('yaymsg').textContent= "Yay! Math is fun :)";
+                    }
+
                     //debuggin
                     console.log("intN="+ intN);
                     //output
                     var ans = intN * intN;
                     console.log("ans=" + ans);
                     document.getElementById('resultsq').textContent = ans;
-
-                    document.getElementById('yaymsg').textContent= "Yay! Math is fun :)";
                 }
                 var calc = document.getElementById('num');
                 calc.addEventListener('blur', calculate, false);
@@ -229,8 +234,21 @@
 
             <input type="button" id="tryit" value="Click and Display"> 
 
-            <div id="message"> 
+            <div id="msgedit"> 
             </div>
+            <script>
+                // event handler
+                function htmlconvert(){
+                    var codes = document.getElementById('code').value;
+                    document.getElementById('msgedit').innerHTML = codes;
+                }
+
+                // event
+                var butE = document.getElementById('tryit');
+                butE.addEventListener('click',htmlconvert, false);
+
+
+            </script>
 
 
         </div>
