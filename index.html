@@ -272,7 +272,31 @@
             </p>
 
             <script type="text/javascript">
+                //event handler
+                function getprice(){
+                    var carYear = document.getElementById('year').value;
+                    var carCondit = document.getElementById('condition').value;
+                    var price = 0;
 
+                    if (carYear=="2003" && carCondit=="Good"){
+                        price = 5000;
+                    }
+                    else if (carYear=="2003" && carCondit=="Fair"){
+                        price = 4500;
+                    }
+                    else if (carYear=="2004" && carCondit=="Fair"){
+                        price = 4700;
+                    }
+                    else{
+                        price = 5500; 
+                    }
+
+                    document.getElementById('price').textContent = price.toString();
+
+                }
+                // register event
+                document.getElementById('year').addEventListener('change',getprice,false);
+                document.querySelector('#condition').addEventListener('change',getprice,false);
 
 
             </script>
@@ -284,6 +308,39 @@
             <p> Choose your favorite theme(warm, cool, hot)
                 <input type="text" id="theme">
             </p>
+
+            <script>
+                function changeTheme(){
+                    let theme = document.querySelector('#theme').value;
+                    let bColor = "white";
+
+                    switch (theme) {
+                        case "warm":
+                            bColor = "orange"; 
+                            break;
+                        case "hot":
+                            bColor = "red";
+                            break;
+                        case "cool":
+                            bColor = "blue";
+                            break;
+                        default:
+                            bColor = "white";
+                            break;
+                    }
+
+                    //old way
+                    // document.body.style.backgroundColor = bColor;
+
+                    // new way
+                    document.body.setAttribute('style', "background-color: " + bColor);
+
+
+                }
+
+                document.querySelector('#theme').addEventListener('blur', changeTheme,false);
+
+            </script>
 
         </div>
 
@@ -313,6 +370,19 @@
             <p id="result">
 
             </p>
+
+            <script>
+                function calcPrem() {
+                    var radE = document.querySelector('input[name = "coverage"]: checked');
+                    var coverage = parseInt(radE.value);
+                    console.log("this is coverage: " + coverage);
+
+
+                }
+
+                document.querySelector('input[value = "Check Premium"]').addEventListener('click', calcPrem, false);
+
+            </script>
 
         </div>
 
