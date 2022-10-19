@@ -367,15 +367,54 @@
             <p>
                 <input type="button" value="Check Premium">
             </p>
-            <p id="result">
+            <p id="premresult">
 
             </p>
 
             <script>
                 function calcPrem() {
-                    var radE = document.querySelector('input[name = "coverage"]: checked');
+                    var radE = document.querySelector('input[name="coverage"]:checked');
                     var coverage = parseInt(radE.value);
                     console.log("this is coverage: " + coverage);
+
+                    var ageIndex = document.getElementById('agegroup').selectedIndex;
+                    let agefact = 0;
+                    switch (ageIndex) {
+                        case 0:
+                            agefact = .08;
+                            break;
+                        case 1:
+                            agefact = .09;
+                            break;
+                        case 2:
+                            agefact = .11;
+                            break;
+                         case 3:
+                            agefact = .17;
+                            break;    
+                    }
+
+
+                    var premium = 10 + ((agefact*coverage)/1000);
+
+                    if(ageIndex == 0){
+                    this.animate([{transform: 'scale(0.2)'},{transform:'scale:(1.5)'}],
+                    {duration: 2000, fill:"forwards"} );
+                    }
+                    else if (ageIndex == 1){
+                    this.animate([{transform: 'translate(0,0)'},{transform:'translate(100px,0)'}],
+                    {duration: 2000, fill:"forwards"} );  
+                    }
+                    else if (ageIndex == 2){
+                    this.animate([{transform: 'translate(0,0)'},{transform:'translate(100px,100px)'}],
+                    {duration: 2000, fill:"forwards"} );  
+                    }
+                    else{
+                    document.getElementById('premresult').animate([{transform: 'translate(0,0)'},{transform:'translate(20px,20px)'}],
+                    {duration: 200, fill:"forwards"} ); 
+                    }
+
+                    document.getElementById('premresult').textContent = "Your premium is " + premium.toString();
 
 
                 }
@@ -394,8 +433,29 @@
             <p> Display the square of numer 1... N </p>
             <p> N = <input type="number" min="1" max="10" id="inputnumber1"> </p>
             <p>
-                <input type="button" value="Click for Square">
+                <input type="button" id = "clickSq" value="Click for Square">
             </p>
+            <p id = "sqResult">
+
+            </p>
+
+            <script>
+                function doSq(){
+                    var  sum = 0;
+                    var sqNum = document.getElementById('inputnumber1').value;
+
+                    for(var i = 1; i<= sqNum; i++){
+                        var product = i*i
+                        sum = sum + product ;
+
+                        console.log(sum);
+                    }
+                    document.getElementById('sqResult').textContent = "The sum is " + sum.toString();
+                }
+            // listener 
+            document.querySelector('#clickSq').addEventListener("click", doSq, false);
+            </script>
+            
 
         </div>
 
