@@ -465,11 +465,32 @@
             <!--  Input number box -->
             <p> N = <input type="number" min="1" max="10" id="inputnumber2"> </p>
             <p>
-                <input type="button" value="Click for multiplication table">
+                <input type="button" id = "showtable" value="Click for multiplication table">
             </p>
 
             <!-- output section -->
             <div id="output">
+                <script>
+                    function showTable(){
+                        var outputlist = "<table border = 1>";
+                        var N = parseFloat(document.getElementById("inputnumber2").value);
+                        for(var i = 1; i<=N; i++){
+                            outputlist += "<tr>";
+                            for(var j =1; j<=N; j++){
+                               outputlist += "<td>"
+                               outputlist += (i + " x " + j + " = " + (i*j)).toString();
+                               outputlist += "</td>";
+                            }
+                            outputlist += "</tr>";
+                        }
+                        outputlist += "</table>";
+                        // put it in the output section 
+                        document.getElementById('output').innerHTML = outputlist;
+                    }
+
+                    //register event
+                    document.getElementById('showtable').addEventListener('click',showTable,false);
+                </script>
 
 
             </div>
@@ -498,7 +519,7 @@
         <div class="practice">
             <h1>Change Attribute -- Rolling a dice </h1>
             <p> <input type="button" id="roll" value="roll" /> </p>
-            <p> <img src="img/die1.png"> </p>
+            <p> <img id = "dice" src="img/die1.png"> </p>
             <table>
                 <tr>
                     <th>Result</th>
@@ -519,6 +540,24 @@
                     <td id="r6"></td>
                 </tr>
             </table>
+
+            <script>
+                var stats = [0,0,0,0,0,0];
+                // event
+                function rollDie(){
+                    var rand = Math.floor(Math.random()*6+1);
+                    stats[rand-1]++;
+                    document.getElementById('dice').setAttribute('src','img/die' +rand+ '.png');
+                    document.getElementById('r' + stats[rand]).innerHTML = stats[rand-1];
+
+
+                    
+
+
+                }
+                // handler
+                document.getElementById('roll').addEventListener('click', rollDie, false);
+            </script>
 
         </div>
 
