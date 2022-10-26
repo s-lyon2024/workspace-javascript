@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main-old.css">
     <!-- Jquery library   ---->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
@@ -547,14 +547,11 @@
                 function rollDie(){
                     var rand = Math.floor(Math.random()*6+1);
                     stats[rand-1]++;
+                    console.log(stats);
                     document.getElementById('dice').setAttribute('src','img/die' +rand+ '.png');
-                    document.getElementById('r' + stats[rand]).innerHTML = stats[rand-1];
-
-
-                    
-
-
+                    document.getElementById('r' + rand).textContent = stats[rand-1].toString(); 
                 }
+
                 // handler
                 document.getElementById('roll').addEventListener('click', rollDie, false);
             </script>
@@ -579,8 +576,27 @@
             <div class="img-container-hide">
                 <img src="img/usca5.jpg" alt="usca">
             </div>
+
 			<script>
-				
+                //automatic event 
+                setInterval(changePic, 5000);
+                var index = 0;
+                // static list of all the image elements
+                var imgList = document.querySelectorAll(".img-containter-hide");
+                imgList[0].setAttribute('class',"img-container");
+
+                //Event Handler
+                function changePic(){
+                    /*
+                    imgList[index].setAttribute('class',"img-container-hide");
+                    index++;
+                    index = index %imgList.length;
+                    imgList[index].setAttribute('class', "img-container");
+                    */
+                }
+
+
+
 			</script>
 
 
@@ -633,9 +649,10 @@
 
 
     </div>
+    <!--  
     <script src="script.js"> </script>
     <script src="js/practice.js"></script>
-
+    -->
 
 </body>
 
