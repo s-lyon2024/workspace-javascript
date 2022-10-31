@@ -6,8 +6,16 @@
     <link rel="stylesheet" type="text/css" href="css/main-old.css">
     <!-- Jquery library   ---->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous">
+    </script>
 
+    <script>
+        //$(document).ready(initfunction);
+        $(document).ready(function(){
+            $('body').hide().fadeIn(3000);
+        });
+
+    </script>
 
 </head>
 
@@ -649,6 +657,44 @@
 
 
     </div>
+
+    <script>
+        /*
+        $('h1').click(function(){
+            alert("you clicked h1!");
+        });
+
+        $('p').mouseover(function(){
+           $(this).slideUp();
+        });
+        // trying toggle
+        $('p').mouseout(function(){
+            $(this).slideDown();
+        });
+        */
+
+        $('p').hide();
+        $('h1').click(function(){
+            $(this).next().slideToggle();
+        });
+        $('p').click(function(){
+            $(this).next().slideToggle();
+        });
+
+        $('input').each(function(){
+            var theID = $(this).attr('id');
+            console.log(theID);
+        });
+
+        $('img').each(function(){
+            var theID = $(this).attr('id');
+            console.log(theID);
+        });
+
+        
+    </script>
+
+
     <!--  
     <script src="script.js"> </script>
     <script src="js/practice.js"></script>
