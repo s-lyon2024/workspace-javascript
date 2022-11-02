@@ -25,4 +25,8 @@ function reservation(){
         room: $('#room').val()
     };
 
+    console.log(guest.name);
+    console.log(guest.numberofGuest);
+    console.log(guest.room);
+
 };
