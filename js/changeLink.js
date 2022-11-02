@@ -8,6 +8,6 @@ $(function(){   // document.ready
     });
 
     $('img').each(function(){
-        $(this).attr('src', "img/" + 'src');
+        $(this).attr('src', "img/" + src.textContent());
     });
 });
